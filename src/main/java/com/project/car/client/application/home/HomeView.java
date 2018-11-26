@@ -2,16 +2,100 @@ package com.project.car.client.application.home;
 
 import javax.inject.Inject;
 
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
+import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.project.car.client.domain.Car;
+import org.gwtbootstrap3.extras.select.client.ui.Option;
+import org.gwtbootstrap3.extras.select.client.ui.Select;
+import org.gwtbootstrap3.extras.select.client.ui.event.HideEvent;
 
-public class HomeView extends ViewImpl implements HomePresenter.MyView {
+import java.util.ArrayList;
+
+public class HomeView extends ViewWithUiHandlers<HomePresenter> implements HomePresenter.MyView {
     interface Binder extends UiBinder<Widget, HomeView> {
     }
+
+    @UiField
+    Select markSelect;
+
+    @UiField
+    Select modelSelect;
+
+    @UiField
+    Select yearSelect;
+
+    @UiField
+    Select colorSelect;
+
+    @UiField
+    Select typeMotorSelect;
+
+    @UiField
+    Select engineCapacitySelect;
+
+    @UiField
+    Label label;
 
     @Inject
     HomeView(Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
+
+        fillYearSelect();
+        modelSelect.setEnabled(false);
+    }
+
+    @Override
+    public void fillModelSelectWithMark(ArrayList<String> modelsWithMark) {
+        modelSelect.clear();
+
+        for (String s : modelsWithMark) {
+            Option option = new Option();
+            option.setText(s);
+
+            modelSelect.add(option);
+        }
+
+        modelSelect.refresh();
+    }
+
+    @Override
+    public void fillYearSelect(){
+        for (int year = 1980; year <= 2018; year++){
+            Option option = new Option();
+            option.setText(String.valueOf(year));
+
+            yearSelect.add(option);
+        }
+
+        yearSelect.refresh();
+    }
+
+    @UiHandler("markSelect")
+    public void onMarkSelectHidden(HideEvent event) {
+        if (!modelSelect.isEnabled())
+            modelSelect.setEnabled(true);
+
+        Option selectedItem = markSelect.getSelectedItem();
+
+        String markCar = selectedItem.getValue();
+
+        getUiHandlers().getModelsCar(markCar);
+    }
+
+    @UiHandler("sendCar")
+    public void onSend(ClickEvent event) {
+        getUiHandlers().onSend(markSelect.getSelectedItem(),   modelSelect.getSelectedItem(),
+                yearSelect.getSelectedItem(), typeMotorSelect.getSelectedItem(),
+                engineCapacitySelect.getSelectedItem(), colorSelect.getSelectedItem());
+    }
+
+    @Override
+    public void showSelectedItems(Car car){
+        label.setText(car.toString());
     }
 }

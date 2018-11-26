@@ -68,7 +68,7 @@
                     <source>${target.jdk}</source>
                     <target>${target.jdk}</target>
                     <encoding>UTF-8</encoding>
-                    <proc>none</proc>
+                    <!--<proc>none</proc>-->
                 </configuration>
             </plugin>
 
@@ -114,6 +114,18 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${gwt.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-servlet</artifactId>
+            <version>${gwt.version}</version>
+        </dependency>
+
         <!-- GWTP -->
         <dependency>
             <groupId>com.gwtplatform</groupId>
@@ -129,22 +141,51 @@
             <version>${gae.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client-servlet</artifactId>
+            <version>1.21.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.objectify</groupId>
+            <artifactId>objectify</artifactId>
+            <version>5.1.21</version>
+        </dependency>
+
         <!-- DI -->
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
             <version>${guice.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.google.inject.extensions</groupId>
             <artifactId>guice-servlet</artifactId>
             <version>${guice.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.google.gwt.inject</groupId>
             <artifactId>gin</artifactId>
             <version>${gin.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+
+
+        <!-- GwtBootstrap3 -->
+        <dependency>
+            <groupId>org.gwtbootstrap3</groupId>
+            <artifactId>gwtbootstrap3</artifactId>
+            <version>0.9.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.gwtbootstrap3</groupId>
+            <artifactId>gwtbootstrap3-extras</artifactId>
+            <version>0.9.4</version>
         </dependency>
 
         <!-- Other -->
@@ -162,29 +203,46 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.jukito</groupId>
             <artifactId>jukito</artifactId>
             <version>${jukito.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-labs</artifactId>
             <version>${gae.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-stubs</artifactId>
             <version>${gae.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-testing</artifactId>
             <version>${gae.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-all</artifactId>
+            <version>1.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.objectify</groupId>
+            <artifactId>objectify-gwt</artifactId>
+            <version>1.2.1</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

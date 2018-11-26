@@ -2,15 +2,34 @@
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.7.0//EN"
         "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
 <module rename-to='moduleName'>
-    <inherits name='com.google.gwt.user.User'/>
+    <inherits name="com.google.gwt.user.User"/>
+
+    <inherits name="com.google.gwt.inject.Inject"/>
+
+    <inherits name="com.googlecode.objectify.Objectify"/>
+
+    <!-- Other module inherits -->
+
+
+    <inherits name="com.gwtplatform.dispatch.Dispatch"/>
+
     <inherits name="com.gwtplatform.mvp.MvpWithEntryPoint"/>
 
-    <extend-configuration-property name="gin.ginjector.modules"
-                                   value="com.project.car.client.gin.ClientModule"/>
+    <!-- GWT Bootstrap 3 -->
 
-    <!-- Specify the paths for translatable code                    -->
-    <source path='client'/>
-    <source path='shared'/>
+
+    <inherits name="org.gwtbootstrap3.GwtBootstrap3"/>
+
+    <inherits name="org.gwtbootstrap3.extras.select.Select"/>
+
+    <extend-configuration-property name="gin.ginjector.modules" value="com.project.car.client.gin.ClientModule"/>
+
+    <!-- Specify the paths for translatable code -->
+
+
+    <source path="client"/>
+
+    <source path="shared"/>
 
     <set-configuration-property name="CssResource.enableGss" value="true"/>
 </module>

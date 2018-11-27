@@ -15,13 +15,13 @@ public class CarDto extends Dto {
     public CarDto() { }
 
     public CarDto (Car car){
-        CarDto carDto = new CarDto();
-
-        if (car != null){
-            carDto.setAttributes(car.getId(), car.getMark(),
-                    car.getModel(), car.getYear(),
-                    car.getTypeEngine(), car.getEngineCapacity(), car.getColor());
-        }
+        this.setId(car.getId());
+        this.mark = car.getMark();
+        this.model = car.getModel();
+        this.year = car.getYear();
+        this.typeEngine = car.getTypeEngine();
+        this.engineCapacity = car.getEngineCapacity();
+        this.color = car.getColor();
     }
 
     public void setAttributes(long id, String mark, String model, int year, String typeEngine, double engineCapacity, String color) {

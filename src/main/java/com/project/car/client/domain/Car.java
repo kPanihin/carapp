@@ -13,14 +13,14 @@ public class Car extends DatastoreObject {
     @Index
     private int year;
     private String typeEngine;
-    private float engineCapacity;
+    private double engineCapacity;
     private String color;
 
     public Car() {
 
     }
 
-    public Car(String mark, String model, int year, String typeEngine, float engineCapacity, String color) {
+    public Car(String mark, String model, int year, String typeEngine, double engineCapacity, String color) {
         this.mark = mark;
         this.model = model;
         this.year = year;
@@ -61,7 +61,7 @@ public class Car extends DatastoreObject {
         return year;
     }
 
-    public void setEngineCapacity(float engineCapacity) {
+    public void setEngineCapacity(double engineCapacity) {
         this.engineCapacity = engineCapacity;
     }
 

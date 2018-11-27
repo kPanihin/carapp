@@ -1,5 +1,7 @@
 package com.project.car.shared.dto;
 
+import com.project.car.client.domain.Car;
+
 public class CarDto extends Dto {
     private static final long serialVersionUID = 1L;
 
@@ -7,12 +9,22 @@ public class CarDto extends Dto {
     private String model;
     private int year;
     private String typeEngine;
-    private float engineCapacity;
+    private double engineCapacity;
     private String color;
 
     public CarDto() { }
 
-    public void setAttributes(long id, String mark, String model, int year, String typeEngine, float engineCapacity, String color) {
+    public CarDto (Car car){
+        CarDto carDto = new CarDto();
+
+        if (car != null){
+            carDto.setAttributes(car.getId(), car.getMark(),
+                    car.getModel(), car.getYear(),
+                    car.getTypeEngine(), car.getEngineCapacity(), car.getColor());
+        }
+    }
+
+    public void setAttributes(long id, String mark, String model, int year, String typeEngine, double engineCapacity, String color) {
         setId(id);
         this.mark = mark;
         this.model = model;
@@ -38,7 +50,7 @@ public class CarDto extends Dto {
         return typeEngine;
     }
 
-    public float getEngineCapacity() {
+    public double getEngineCapacity() {
         return engineCapacity;
     }
 
@@ -56,4 +68,16 @@ public class CarDto extends Dto {
         engineCapacity = carToCopy.engineCapacity;
         color = carToCopy.color;
     }
+
+    @Override
+    public String toString(){
+        return this.getId() + " "
+                + this.mark + " "
+                + this.model + " "
+                + this.year + " "
+                + this.typeEngine + " "
+                + this.engineCapacity + " "
+                + this.color;
+    }
+
 }

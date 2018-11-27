@@ -155,7 +155,7 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
         car.setEngineCapacity(Float.valueOf(capacityEngine.getValue()));
         car.setColor(color.getValue());
 
-        getView().showSelectedItems(car);
+        //getView().showSelectedItems(car);
 
         dispatcher.execute(new SetCarAction(car), new AsyncCallbackImpl<SetCarResult>() {
             @Override

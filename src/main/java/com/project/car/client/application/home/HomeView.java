@@ -6,12 +6,18 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.*;
+import com.google.gwt.view.client.RangeChangeEvent;
+import com.google.gwt.view.client.SelectionChangeEvent;
+import com.google.gwt.view.client.SingleSelectionModel;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.project.car.client.domain.Car;
+import com.project.car.client.widget.cartable.CarTableWidgetPresenter;
 import com.project.car.shared.dto.CarDto;
+import org.gwtbootstrap3.client.ui.Pagination;
+import org.gwtbootstrap3.client.ui.gwt.DataGrid;
 import org.gwtbootstrap3.extras.select.client.ui.Option;
 import org.gwtbootstrap3.extras.select.client.ui.Select;
 import org.gwtbootstrap3.extras.select.client.ui.event.HideEvent;
@@ -36,13 +42,16 @@ public class HomeView extends ViewWithUiHandlers<HomePresenter> implements HomeP
     Select colorSelect;
 
     @UiField
-    Select typeMotorSelect;
+    Select typeEngineSelect;
 
     @UiField
     Select engineCapacitySelect;
 
     @UiField
     Label label;
+
+    @UiField
+    FlexTable flexTable;
 
     @Inject
     HomeView(Binder uiBinder) {
@@ -93,23 +102,40 @@ public class HomeView extends ViewWithUiHandlers<HomePresenter> implements HomeP
     @UiHandler("sendCar")
     public void onSend(ClickEvent event) {
         getUiHandlers().onSend(markSelect.getSelectedItem(),   modelSelect.getSelectedItem(),
-                yearSelect.getSelectedItem(), typeMotorSelect.getSelectedItem(),
+                yearSelect.getSelectedItem(), typeEngineSelect.getSelectedItem(),
                 engineCapacitySelect.getSelectedItem(), colorSelect.getSelectedItem());
     }
 
     @UiHandler("getCars")
     public void onGet(ClickEvent event){
+        initHeader();
         getUiHandlers().onGet();
+    }
+
+    public void initHeader(){
+        flexTable.setText(0,0,"Марка");
+        flexTable.setText(0,1,"Модель");
+        flexTable.setText(0,2,"Год");
+        flexTable.setText(0,3,"Тип двигателя");
+        flexTable.setText(0,4,"Объем двигателя");
+        flexTable.setText(0,5,"Цвет");
     }
 
     @Override
     public void showCars(List<CarDto> cars){
-        label.setText("");
 
-        for (CarDto car : cars){
-            label.setText(label.getText() + car.toString() + "  |  ");
+        int i = 1;
+        for(CarDto car: cars){
+            flexTable.setText(i, 0, car.getMark());
+            flexTable.setText(i, 1, car.getModel());
+            flexTable.setText(i, 2, Integer.toString(car.getYear()));
+            flexTable.setText(i, 3, car.getTypeEngine());
+            flexTable.setText(i, 4, Double.toString(car.getEngineCapacity()));
+            flexTable.setText(i, 5, car.getColor());
+            i++;
         }
     }
+
 
     @Override
     public void showSelectedItems(Car car){

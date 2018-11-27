@@ -10,7 +10,7 @@ public class DatastoreObject implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    protected Long id;
+    private Long id;
     private Integer version = 0;
 
     private Date doCreated = new Date();

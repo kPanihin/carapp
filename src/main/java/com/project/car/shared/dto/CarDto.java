@@ -25,7 +25,7 @@ public class CarDto extends Dto {
     }
 
     public void setAttributes(long id, String mark, String model, int year, String typeEngine, double engineCapacity, String color) {
-        setId(id);
+        this.setId(id);
         this.mark = mark;
         this.model = model;
         this.year = year;

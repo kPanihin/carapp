@@ -31,5 +31,11 @@
 
     <source path="shared"/>
 
+    <public path='resource'>
+        <include name='css/*.css'/>
+        <include name='js/*.js'/>
+    </public>
+
+    <set-configuration-property name = "CssResource.legacy" value = "true" />
     <set-configuration-property name="CssResource.enableGss" value="true"/>
 </module>

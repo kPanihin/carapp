@@ -6,15 +6,18 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.project.car.client.domain.Car;
+import com.project.car.shared.dto.CarDto;
 import org.gwtbootstrap3.extras.select.client.ui.Option;
 import org.gwtbootstrap3.extras.select.client.ui.Select;
 import org.gwtbootstrap3.extras.select.client.ui.event.HideEvent;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeView extends ViewWithUiHandlers<HomePresenter> implements HomePresenter.MyView {
     interface Binder extends UiBinder<Widget, HomeView> {
@@ -92,6 +95,20 @@ public class HomeView extends ViewWithUiHandlers<HomePresenter> implements HomeP
         getUiHandlers().onSend(markSelect.getSelectedItem(),   modelSelect.getSelectedItem(),
                 yearSelect.getSelectedItem(), typeMotorSelect.getSelectedItem(),
                 engineCapacitySelect.getSelectedItem(), colorSelect.getSelectedItem());
+    }
+
+    @UiHandler("getCars")
+    public void onGet(ClickEvent event){
+        getUiHandlers().onGet();
+    }
+
+    @Override
+    public void showCars(List<CarDto> cars){
+        label.setText("");
+
+        for (CarDto car : cars){
+            label.setText(label.getText() + car.toString() + "  |  ");
+        }
     }
 
     @Override

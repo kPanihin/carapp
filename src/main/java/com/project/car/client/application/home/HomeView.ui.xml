@@ -71,6 +71,8 @@
 
         <b:Button ui:field="sendCar" text="Send" ></b:Button>
 
+        <b:Button ui:field="getCars" text="Get" ></b:Button>
+
         <g:Label ui:field="label"/>
     </g:HTMLPanel>
 </ui:UiBinder>

@@ -14,11 +14,16 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import com.project.car.server.dao.CarDao;
+import com.project.car.shared.action.GetCarsAction;
+import com.project.car.shared.action.GetCarsResult;
 import com.project.car.shared.action.SetCarAction;
 import com.project.car.shared.action.SetCarResult;
+import com.project.car.shared.dto.CarDto;
 import org.gwtbootstrap3.extras.select.client.ui.Option;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter.MyProxy> implements HomeUiHandlers {
@@ -26,6 +31,7 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
         void fillModelSelectWithMark(ArrayList<String> modelsWithMark);
         void fillYearSelect();
 
+        void showCars(List<CarDto> cars);
         void showSelectedItems(Car car);
     }
 
@@ -155,6 +161,16 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
             @Override
             protected void onCustomSuccess(SetCarResult result) {
 
+            }
+        });
+    }
+
+    @Override
+    public void onGet(){
+        dispatcher.execute(new GetCarsAction(), new AsyncCallbackImpl<GetCarsResult>() {
+            @Override
+            protected void onCustomSuccess(GetCarsResult result) {
+                getView().showCars(result.getCars());
             }
         });
     }

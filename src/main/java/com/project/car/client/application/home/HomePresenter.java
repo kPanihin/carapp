@@ -2,6 +2,8 @@ package com.project.car.client.application.home;
 
 import com.gwtplatform.dispatch.rpc.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.HasUiHandlers;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
+import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.project.car.client.application.ApplicationPresenter;
 import com.project.car.client.domain.CarModels;
 import com.project.car.client.dispatch.AsyncCallbackImpl;
@@ -31,8 +33,6 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
         void fillModelSelectWithMark(ArrayList<String> modelsWithMark);
         void fillYearSelect();
 
-        void showCars(List<CarDto> cars);
-        void showSelectedItems(Car car);
     }
 
     @ProxyStandard
@@ -44,16 +44,19 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
     private Car car;
     
     private final DispatchAsync dispatcher;
+    private final PlaceManager placeManager;
 
     @Inject
     HomePresenter(
             EventBus eventBus,
             MyView view,
             MyProxy proxy,
-            DispatchAsync dispatcher) {
+            DispatchAsync dispatcher,
+            PlaceManager placeManager) {
         super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
 
         this.dispatcher = dispatcher;
+        this.placeManager = placeManager;
 
         getView().setUiHandlers(this);
     }
@@ -166,12 +169,10 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
     }
 
     @Override
-    public void onGet(){
-        dispatcher.execute(new GetCarsAction(), new AsyncCallbackImpl<GetCarsResult>() {
-            @Override
-            protected void onCustomSuccess(GetCarsResult result) {
-                getView().showCars(result.getCars());
-            }
-        });
+    public void onShow(){
+        PlaceRequest placeRequest = new PlaceRequest.Builder()
+                .nameToken(NameTokens.TABLE)
+                .build();
+        placeManager.revealPlace(placeRequest);
     }
 }

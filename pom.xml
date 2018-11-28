@@ -65,11 +65,21 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
+                    <compilerVersion>1.8</compilerVersion>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <useIncrementalCompilation>false</useIncrementalCompilation>
+                    <compilerArgs>
+                        <arg>-Xlint:deprecation</arg>
+                        <arg>-Xlint:unchecked</arg>
+                    </compilerArgs>
+                </configuration>
+                <!--<configuration>
                     <source>${target.jdk}</source>
                     <target>${target.jdk}</target>
                     <encoding>UTF-8</encoding>
-                    <!--<proc>none</proc>-->
-                </configuration>
+                    <proc>none</proc>
+                </configuration>-->
             </plugin>
 
             <!-- GWT -->

@@ -161,21 +161,17 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
 
         car.setTypeEngine(typeEngineOption.getValue());
 
-        if (capacityEngineOption == null)
-            car.setEngineCapacity(-1);
-        else {
-            String capacityEngine = capacityEngineOption.getValue();
-            switch (capacityEngine) {
-                case "Менее 0.7":
-                    car.setEngineCapacity(0);
-                    break;
-                case "Более 5.0":
-                    car.setEngineCapacity(6);
-                    break;
-                default:
-                    car.setEngineCapacity(Float.valueOf(capacityEngine));
-                    break;
-            }
+        String capacityEngine = capacityEngineOption.getValue();
+        switch (capacityEngine) {
+            case "Менее 0.7":
+                car.setEngineCapacity(0);
+                break;
+            case "Более 5.0":
+                car.setEngineCapacity(6);
+                break;
+            default:
+                car.setEngineCapacity(Float.valueOf(capacityEngine));
+                break;
         }
 
         car.setColor(colorOption.getValue());

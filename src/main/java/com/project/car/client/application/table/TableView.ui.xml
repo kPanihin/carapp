@@ -6,14 +6,6 @@
     <g:HTMLPanel>
         <g:SimplePanel ui:field="panel"/>
 
-        <b:Column size="MD_2" styleName="col-md-2 sidebar">
-            <b:NavPills ui:field="floorsNav" styleName="nav nav-sidebar" />
-        </b:Column>
-
-        <b:Column size="MD_8">
-            <b:Breadcrumbs ui:field="sectionsBread"/>
-        </b:Column>
-
         <b:Button ui:field="back" text="Back" marginLeft="20"/>
     </g:HTMLPanel>
 </ui:UiBinder>

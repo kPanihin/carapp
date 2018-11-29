@@ -4,61 +4,61 @@
              xmlns:select="urn:import:org.gwtbootstrap3.extras.select.client.ui">
 
     <g:HTMLPanel>
-        <b:Column size="MD_2">
-            <select:Select ui:field="markSelect" placeholder="Марка автомобиля">
-                <select:Option text="ВАЗ"/>
-                <select:Option text="Москвич"/>
-                <select:Option text="BMW"/>
-                <select:Option text="Тойота"/>
-            </select:Select>
-        </b:Column>
+        <b:Row paddingLeft="15" paddingRight="15">
+            <b:Column size="MD_2">
+                <select:Select ui:field="markSelect" placeholder="Марка автомобиля">
+                    <select:Option text="ВАЗ"/>
+                    <select:Option text="Москвич"/>
+                    <select:Option text="BMW"/>
+                    <select:Option text="Тойота"/>
+                </select:Select>
+            </b:Column>
 
-        <b:Column size="MD_2">
-            <select:Select ui:field="modelSelect" placeholder="Модель автомобиля">
-            </select:Select>
-        </b:Column>
+            <b:Column size="MD_2">
+                <select:Select ui:field="modelSelect" placeholder="Модель автомобиля">
+                </select:Select>
+            </b:Column>
 
-        <b:Column size="MD_2">
-            <select:Select ui:field="yearSelect" placeholder="Год выпуска">
-                <select:Option text="Старше 1980"/>
-            </select:Select>
-        </b:Column>
+            <b:Column size="MD_2">
+                <select:Select ui:field="yearSelect" placeholder="Год выпуска">
+                </select:Select>
+            </b:Column>
 
-        <b:Column size="MD_2">
-            <select:Select ui:field="typeEngineSelect" placeholder="Тип мотора">
-                <select:Option text="Безиновый"/>
-                <select:Option text="Дизельный"/>
-                <select:Option text="Электро"/>
-                <select:Option text="Гибрид"/>
-            </select:Select>
-        </b:Column>
+            <b:Column size="MD_2">
+                <select:Select ui:field="typeEngineSelect" placeholder="Тип мотора">
+                    <select:Option text="Безиновый"/>
+                    <select:Option text="Дизельный"/>
+                    <select:Option text="Электро"/>
+                    <select:Option text="Гибрид"/>
+                </select:Select>
+            </b:Column>
 
-        <b:Column size="MD_2">
-            <select:Select ui:field="engineCapacitySelect" placeholder="Объем мотора">
-                <select:Option text="Менее 0.7"/>
-                <select:Option text="0.7"/>
-                <select:Option text="1.0"/>
-                <select:Option text="1.3"/>
-                <select:Option text="1.4"/>
-                <select:Option text="1.5"/>
-                <select:Option text="1.6"/>
-                <select:Option text="1.7"/>
-                <select:Option text="1.8"/>
-                <select:Option text="1.9"/>
-                <select:Option text="2.0"/>
-                <select:Option text="2.2"/>
-                <select:Option text="2.5"/>
-                <select:Option text="2.8"/>
-                <select:Option text="3.0"/>
-                <select:Option text="3.2"/>
-                <select:Option text="3.5"/>
-                <select:Option text="4.0"/>
-                <select:Option text="5.0"/>
-                <select:Option text="Более 5.0"/>
-            </select:Select>
-        </b:Column>
+            <b:Column size="MD_2">
+                <select:Select ui:field="engineCapacitySelect" placeholder="Объем мотора">
+                    <select:Option text="Менее 0.7"/>
+                    <select:Option text="0.7"/>
+                    <select:Option text="1.0"/>
+                    <select:Option text="1.3"/>
+                    <select:Option text="1.4"/>
+                    <select:Option text="1.5"/>
+                    <select:Option text="1.6"/>
+                    <select:Option text="1.7"/>
+                    <select:Option text="1.8"/>
+                    <select:Option text="1.9"/>
+                    <select:Option text="2.0"/>
+                    <select:Option text="2.2"/>
+                    <select:Option text="2.5"/>
+                    <select:Option text="2.8"/>
+                    <select:Option text="3.0"/>
+                    <select:Option text="3.2"/>
+                    <select:Option text="3.5"/>
+                    <select:Option text="4.0"/>
+                    <select:Option text="5.0"/>
+                    <select:Option text="Более 5.0"/>
+                </select:Select>
+            </b:Column>
 
-        <b:Column size="MD_2">
+            <b:Column size="MD_2">
             <select:Select ui:field="colorSelect" placeholder="Цвет автомобиля">
                 <select:Option text="Красный"/>
                 <select:Option text="Белый"/>
@@ -68,10 +68,12 @@
                 <select:Option text="Черный"/>
             </select:Select>
         </b:Column>
+        </b:Row>
 
-        <b:Button ui:field="sendCar" text="Send" marginLeft="15"></b:Button>
+        <b:Row paddingLeft="15" paddingTop="15" >
+            <b:Button ui:field="sendCar" text="Send" marginLeft="15"></b:Button>
 
-        <b:Button ui:field="showCars" text="Show" ></b:Button>
-
+            <b:Button ui:field="showCars" text="Show" marginLeft="15"></b:Button>
+        </b:Row>
     </g:HTMLPanel>
 </ui:UiBinder>

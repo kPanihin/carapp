@@ -4,9 +4,8 @@
              xmlns:select="urn:import:org.gwtbootstrap3.extras.select.client.ui">
 
     <g:HTMLPanel>
+        <g:SimplePanel ui:field="panel"/>
 
-        <g:FlexTable ui:field="flexTable" borderWidth="2" />
-
-        <b:Button ui:field="back" text="Back"/>
+        <b:Button ui:field="back" text="Back" marginLeft="20"/>
     </g:HTMLPanel>
 </ui:UiBinder>

@@ -46,12 +46,28 @@ public class CarDto extends Dto {
         return year;
     }
 
+    public String getYearString(){
+        if (year == 0)
+            return "Старше 1980";
+
+        return String.valueOf(year);
+    }
+
     public String getTypeEngine() {
         return typeEngine;
     }
 
     public double getEngineCapacity() {
         return engineCapacity;
+    }
+
+    public String getCapacityEngineString(){
+        if (engineCapacity < 0.7)
+            return "Менее 0.7";
+        if (engineCapacity > 5)
+            return "Более 5.0";
+
+        return String.valueOf(engineCapacity);
     }
 
     public String getColor() {

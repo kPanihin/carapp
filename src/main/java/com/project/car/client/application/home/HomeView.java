@@ -70,12 +70,16 @@ public class HomeView extends ViewWithUiHandlers<HomePresenter> implements HomeP
 
     @Override
     public void fillYearSelect(){
-        for (int year = 1980; year <= 2018; year++){
+        for (int year = 2018; year >= 1980; year--){
             Option option = new Option();
             option.setText(String.valueOf(year));
 
             yearSelect.add(option);
         }
+
+        Option option = new Option();
+        option.setText("Старше 1980");
+        yearSelect.add(option);
 
         yearSelect.refresh();
     }

@@ -148,17 +148,33 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
     }
 
     @Override
-    public void onSend(Option mark, Option model, Option year, Option typeEngine, Option capacityEngine, Option color) {
+    public void onSend(Option markOption, Option modelOption, Option yearOption, Option typeEngineOption, Option capacityEngineOption, Option colorOption) {
         car = new Car();
 
-        car.setMark(mark.getValue());
-        car.setModel(model.getValue());
-        car.setYear(Integer.valueOf(year.getValue()));
-        car.setTypeEngine(typeEngine.getValue());
-        car.setEngineCapacity(Float.valueOf(capacityEngine.getValue()));
-        car.setColor(color.getValue());
+        car.setMark(markOption.getValue());
+        car.setModel(modelOption.getValue());
 
-        //getView().showSelectedItems(car);
+        String year = yearOption.getValue();
+        if (year.equals("Старше 1980"))
+            car.setYear(0);
+        else car.setYear(Integer.valueOf(year));
+
+        car.setTypeEngine(typeEngineOption.getValue());
+
+        String capacityEngine = capacityEngineOption.getValue();
+        switch (capacityEngine) {
+            case "Менее 0.7":
+                car.setEngineCapacity(0);
+                break;
+            case "Более 5.0":
+                car.setEngineCapacity(6);
+                break;
+            default:
+                car.setEngineCapacity(Float.valueOf(capacityEngine));
+                break;
+        }
+
+        car.setColor(colorOption.getValue());
 
         dispatcher.execute(new SetCarAction(car), new AsyncCallbackImpl<SetCarResult>() {
             @Override

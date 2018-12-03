@@ -96,6 +96,16 @@ public class HomeView extends ViewWithUiHandlers<HomePresenter> implements HomeP
         getUiHandlers().getModelsCar(markCar);
     }
 
+    @UiHandler("typeEngineSelect")
+    public void onTypeEngineSelect(HideEvent event){
+        Option selectedItem = typeEngineSelect.getSelectedItem();
+
+        if (selectedItem.getValue().equals("Электро")) {
+            engineCapacitySelect.setEnabled(false);
+        }
+        else engineCapacitySelect.setEnabled(true);
+    }
+
     @UiHandler("sendCar")
     public void onSend(ClickEvent event) {
         getUiHandlers().onSend(markSelect.getSelectedItem(),   modelSelect.getSelectedItem(),

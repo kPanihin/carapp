@@ -62,6 +62,8 @@ public class CarDto extends Dto {
     }
 
     public String getCapacityEngineString(){
+        if (engineCapacity < 0)
+            return "";
         if (engineCapacity < 0.7)
             return "Менее 0.7";
         if (engineCapacity > 5)

@@ -1,2 +1,3 @@
 target/
 .idea/
+/gwtp-appengine-guice-archetype.iml
